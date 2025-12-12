@@ -3,6 +3,10 @@ package desafio.itau.springboot.service;
 import desafio.itau.springboot.model.Transaction;
 import org.springframework.stereotype.Service;
 
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
+import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -18,5 +22,14 @@ public class TransactionService {
 
     public void clearQueue(){
         transactionsQueue.clear();
+    }
+
+    public List<Transaction> findByLast60Seconds(){
+        OffsetDateTime limit = OffsetDateTime.now().minusSeconds(60);
+        return transactionsQueue.stream()
+                .filter(transaction ->
+                    transaction.getDataHora().isAfter(limit)
+                )
+                .toList();
     }
 }
