@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -30,7 +28,7 @@ public class TransactionService {
         transactionsQueue.clear();
     }
 
-    public List<Transaction> findByLast60Seconds(){
+    public List<Transaction> findByLastSeconds(){
         OffsetDateTime limit = OffsetDateTime.now().minusSeconds(60);
         logger.info("Buscando transactions que ocorreram de {} até {}", limit, OffsetDateTime.now());
         return transactionsQueue.stream()

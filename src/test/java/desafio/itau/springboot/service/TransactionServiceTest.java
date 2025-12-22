@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.time.OffsetDateTime;
-import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,7 +28,7 @@ class TransactionServiceTest {
 
             transactionService.addQueue(transaction);
 
-            var listByLast60Seconds = transactionService.findByLast60Seconds();
+            var listByLast60Seconds = transactionService.findByLastSeconds();
 
             assertEquals(1, listByLast60Seconds.size());
             assertTrue(listByLast60Seconds.contains(transaction));
@@ -42,14 +41,14 @@ class TransactionServiceTest {
 
             transactionService.addQueue(transaction);
 
-            var listByLast60Seconds = transactionService.findByLast60Seconds();
+            var listByLast60Seconds = transactionService.findByLastSeconds();
 
             assertFalse(listByLast60Seconds.contains(transaction));
         }
 
         @Test
         void shouldReturnEmptyList(){
-            var listByLast60Seconds = transactionService.findByLast60Seconds();
+            var listByLast60Seconds = transactionService.findByLastSeconds();
             assertTrue(listByLast60Seconds.isEmpty());
         }
     }
@@ -65,7 +64,7 @@ class TransactionServiceTest {
             transactionService.addQueue(transaction1);
             transactionService.addQueue(transaction2);
             transactionService.clearQueue();
-            var listByLast60Seconds = transactionService.findByLast60Seconds();
+            var listByLast60Seconds = transactionService.findByLastSeconds();
 
             assertTrue(listByLast60Seconds.isEmpty());
 
@@ -89,7 +88,7 @@ class TransactionServiceTest {
             transactionService.addQueue(t3);
             transactionService.addQueue(t4);
             transactionService.addQueue(t5);
-            var listByLast60Seconds = transactionService.findByLast60Seconds();
+            var listByLast60Seconds = transactionService.findByLastSeconds();
 
             assertTrue(listByLast60Seconds.contains(t1));
             assertTrue(listByLast60Seconds.contains(t2));

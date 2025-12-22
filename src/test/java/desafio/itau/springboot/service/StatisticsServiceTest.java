@@ -31,7 +31,7 @@ class StatisticsServiceTest {
         @Test
         void shouldReturnZeroStatisticsWhenNoTransactionsExist(){
 
-            when(transactionService.findByLast60Seconds())
+            when(transactionService.findByLastSeconds())
                     .thenReturn(Collections.emptyList());
 
             var result = statisticsService.getStatistics();
@@ -41,7 +41,7 @@ class StatisticsServiceTest {
             assertEquals(0.0, result.avg());
             assertEquals(0.0, result.min());
             assertEquals(0.0, result.max());
-            verify(transactionService, times(1)).findByLast60Seconds();
+            verify(transactionService, times(1)).findByLastSeconds();
 
         }
 
@@ -52,7 +52,7 @@ class StatisticsServiceTest {
               new Transaction(30, OffsetDateTime.now()),
               new Transaction(40, OffsetDateTime.now())
             );
-            when(transactionService.findByLast60Seconds()).thenReturn(transactionsList);
+            when(transactionService.findByLastSeconds()).thenReturn(transactionsList);
 
             var result = statisticsService.getStatistics();
 
@@ -61,7 +61,7 @@ class StatisticsServiceTest {
             assertEquals(30.0, result.avg());
             assertEquals(20.0, result.min());
             assertEquals(40.0, result.max());
-            verify(transactionService, times(1)).findByLast60Seconds();
+            verify(transactionService, times(1)).findByLastSeconds();
 
 
         }
