@@ -2,6 +2,8 @@ package desafio.itau.springboot.service;
 
 import desafio.itau.springboot.dto.StatisticsDTO;
 import desafio.itau.springboot.model.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
@@ -14,6 +16,7 @@ import java.util.Queue;
 public class StatisticsService {
 
     private TransactionService transactionService;
+    private final Logger logger = LoggerFactory.getLogger(StatisticsService.class);
 
     public StatisticsService(TransactionService transactionService){
         this.transactionService = transactionService;
@@ -21,10 +24,10 @@ public class StatisticsService {
 
     public StatisticsDTO getStatistics() {
         List<Transaction> last60SecondsTransactions = transactionService.findByLast60Seconds();
+        logger.info("Calculando estatísticas | totalTransactions={}", last60SecondsTransactions.size());
         DoubleSummaryStatistics stats = last60SecondsTransactions.stream()
                 .mapToDouble(Transaction::getValor)
                 .summaryStatistics();
-        System.out.println(stats.getCount());
         if(stats.getCount() == 0){
             return new StatisticsDTO(0,0.0,0.0,0.0,0.0);
         }
