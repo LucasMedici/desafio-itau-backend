@@ -1,0 +1,19 @@
+# Build
+target/
+*.log
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Git
+.git/
+.gitignore
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Variáveis de ambiente
+.env
