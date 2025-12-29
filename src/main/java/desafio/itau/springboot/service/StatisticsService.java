@@ -2,6 +2,7 @@ package desafio.itau.springboot.service;
 
 import desafio.itau.springboot.dto.StatisticsDTO;
 import desafio.itau.springboot.model.Transaction;
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class StatisticsService {
         this.transactionService = transactionService;
     }
 
+    @Timed(value = "statistics.calculation.time", description = "Métricas relacionados ao calculo das estatísticas")
     public StatisticsDTO getStatistics() {
         List<Transaction> lastSecondsTransactions = transactionService.findByLastSeconds();
         logger.info("Calculando estatísticas | totalTransactions={}", lastSecondsTransactions.size());
