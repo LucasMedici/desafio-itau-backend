@@ -3,6 +3,7 @@ package desafio.itau.springboot.service;
 import desafio.itau.springboot.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
@@ -14,6 +15,10 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class TransactionService {
 
     private final Logger logger = LoggerFactory.getLogger(TransactionService.class);
+
+    @Value("${time.to.get.statistics}")
+    private Long timeToGetStatistics;
+
 
     // Usar uma ConcurrentLinkedQueue garante o Thread-safety (Com JPA ele cuidaria disso)
     private final Queue<Transaction> transactionsQueue = new ConcurrentLinkedQueue<>();
@@ -29,7 +34,7 @@ public class TransactionService {
     }
 
     public List<Transaction> findByLastSeconds(){
-        OffsetDateTime limit = OffsetDateTime.now().minusSeconds(60);
+        OffsetDateTime limit = OffsetDateTime.now().minusSeconds(timeToGetStatistics);
         logger.info("Buscando transactions que ocorreram de {} até {}", limit, OffsetDateTime.now());
         return transactionsQueue.stream()
                 .filter(transaction ->
