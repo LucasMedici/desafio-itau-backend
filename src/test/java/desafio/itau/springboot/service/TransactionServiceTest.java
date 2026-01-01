@@ -4,19 +4,25 @@ import desafio.itau.springboot.model.Transaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.OffsetDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 
 class TransactionServiceTest {
 
     private TransactionService transactionService;
 
     @BeforeEach
-    void setup(){
+    void setup() throws Exception{
         transactionService = new TransactionService();
+
+        var field = TransactionService.class.getDeclaredField("timeToGetStatistics");
+
+        field.setAccessible(true);
+        field.set(transactionService, 60L);
     }
 
     @Nested
