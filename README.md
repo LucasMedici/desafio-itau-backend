@@ -9,14 +9,14 @@
 - [Visão Geral](#-visão-geral)
 - [Tecnologias Utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Como Executar o Projeto Localmente](#-executando-com-docker)
+- [Como Executar o Projeto Localmente](#%EF%B8%8F-executando-localmente-sem-docker)
 - [Como Executar o Projeto com Docker](#-executando-com-docker)
-- [Documentação da API](#-executando-com-docker)
-- [Configuração do período de cálculo](#-executando-com-docker)
-- [Testes Automatizados](#-executando-com-docker)
-- [Observabilidade e Métricas](#-executando-com-docker)
-- [Logs](#-executando-com-docker)
-- [Tratamento de Erros](#-executando-com-docker)
+- [Documentação da API](#-documentação-da-api-swagger)
+- [Configuração do período de cálculo](#%EF%B8%8F-configuração-do-período-de-cálculo)
+- [Testes Automatizados](#-testes-automatizados)
+- [Observabilidade e Métricas](#-observabilidade-e-métricas)
+- [Logs](#-logs)
+- [Tratamento de Erros](#-tratamento-de-erros)
 
   
 ## 🧠 Visão Geral
