@@ -1,6 +1,7 @@
 package desafio.itau.springboot.controller;
 
 import desafio.itau.springboot.dto.TransactionDTO;
+import desafio.itau.springboot.exception.ValorCannotBeLessThanZeroException;
 import desafio.itau.springboot.model.Transaction;
 import desafio.itau.springboot.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,6 +32,9 @@ public class TransactionController {
     })
     @PostMapping
     public ResponseEntity<Void> addTransaction(@RequestBody @Valid TransactionDTO transactionDTO){
+        if(transactionDTO.valor()<0){
+            throw new ValorCannotBeLessThanZeroException("O valor não pode ser menor que zero.");
+        }
         transactionService.addQueue(new Transaction(transactionDTO.valor(), transactionDTO.dataHora()));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

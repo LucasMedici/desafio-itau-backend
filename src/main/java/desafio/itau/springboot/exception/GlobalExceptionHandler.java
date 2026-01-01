@@ -13,4 +13,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Void> handleValidationException(MethodArgumentNotValidException exception){
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
     }
+
+    @ExceptionHandler(ValorCannotBeLessThanZeroException.class)
+    public ResponseEntity<Void> handleValorCannotBeLessThanZeroException(ValorCannotBeLessThanZeroException exception){
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).build();
+    }
 }
