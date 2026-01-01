@@ -1,11 +1,24 @@
 
 <div align="center">
-  <img width="300" height="300" alt="Design sem nome" src="https://github.com/user-attachments/assets/fd718139-0812-4c58-82bd-f249dc794539" />
+  <img width="150" height="150" alt="Design sem nome" src="https://github.com/user-attachments/assets/fd718139-0812-4c58-82bd-f249dc794539" />
 </div>
 
 
 # 📊 API de Transações — Desafio Backend Itaú
 
+- [Visão Geral](#-visão-geral)
+- [Tecnologias Utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [Como Executar o Projeto Localmente](#%EF%B8%8F-executando-localmente-sem-docker)
+- [Como Executar o Projeto com Docker](#-executando-com-docker)
+- [Documentação da API](#-documentação-da-api-swagger)
+- [Configuração do período de cálculo](#%EF%B8%8F-configuração-do-período-de-cálculo)
+- [Testes Automatizados](#-testes-automatizados)
+- [Observabilidade e Métricas](#-observabilidade-e-métricas)
+- [Logs](#-logs)
+- [Tratamento de Erros](#-tratamento-de-erros)
+
+  
 ## 🧠 Visão Geral
 Esta aplicação expõe endpoints para:
 - Registrar transações financeiras
@@ -94,7 +107,7 @@ Testes unitários implementadas com JUnit5, Mockito e MockMvc
 mvn test
 ```
 
-## 📊 Observabilidade & Métricas
+## 📊 Observabilidade e Métricas
 A Aplicação conta com Spring Actuator, Micrometer e métricas de tempo via @Timed
 
 Endpoints úteis:
