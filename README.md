@@ -7,7 +7,7 @@
 # 📊 API de Transações — Desafio Backend Itaú
 
 - [Visão Geral](#-visão-geral)
-- [Tecnologias Utilizadas](#️-tecnologias-utilizadas)
+- [Tecnologias Utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Como Executar o Projeto Localmente](#-executando-com-docker)
 - [Como Executar o Projeto com Docker](#-executando-com-docker)
